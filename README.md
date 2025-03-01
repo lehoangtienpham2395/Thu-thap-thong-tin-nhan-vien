@@ -71,7 +71,6 @@
 <body>
 
 <div class="container">
-    
     <p class="highlight">
         Lưu ý, nhập đúng và đầy đủ các thông tin dưới đây, nó sẽ giúp cho phần hoàn tất hồ sơ của bạn được nhanh hơn và có thể đi làm sớm nhất có thể. Cảm ơn sự hợp tác của bạn!
     </p>
@@ -112,23 +111,17 @@
 document.getElementById("dataForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    let formData = {
-        fullName: document.getElementById("fullName").value,
-        phoneNumber: document.getElementById("phoneNumber").value,
-        hanhKiem: document.getElementById("hanhKiem").files[0] ? document.getElementById("hanhKiem").files[0].name : "Không có",
-        cccdFront: document.getElementById("cccdFront").files[0].name,
-        cccdBack: document.getElementById("cccdBack").files[0].name
-    };
+    let formData = new FormData();
+    formData.append("fullName", document.getElementById("fullName").value);
+    formData.append("phoneNumber", document.getElementById("phoneNumber").value);
+    formData.append("hanhKiem", document.getElementById("hanhKiem").files[0]);
+    formData.append("cccdFront", document.getElementById("cccdFront").files[0]);
+    formData.append("cccdBack", document.getElementById("cccdBack").files[0]);
 
-    fetch("https://script.google.com/macros/s/AKfycbzmH4pFC7h01Pq-nKblv_4YrF8Qe6qyhJBC2iJ6Yo_7WLn_CjP5fmxyUKw-vCAfzQww/exec", {
-  method: "POST",
-  mode: "no-cors",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(data),
-})
-    
+    fetch("https://script.google.com/macros/s/AKfycbxSIAFJ892shmGjRzMpL1lt8kV7nN3sTwD5HJXtMglcR_FQfQ8Q2yrivIJdlnAvzPvI/exec", {
+        method: "POST",
+        body: formData
+    })
     .then(response => response.text())
     .then(data => {
         alert("Dữ liệu đã được gửi thành công!");
