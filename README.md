@@ -121,10 +121,14 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
     };
 
     fetch("https://script.google.com/macros/s/AKfycbzmH4pFC7h01Pq-nKblv_4YrF8Qe6qyhJBC2iJ6Yo_7WLn_CjP5fmxyUKw-vCAfzQww/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+})
+    
     .then(response => response.text())
     .then(data => {
         alert("Dữ liệu đã được gửi thành công!");
