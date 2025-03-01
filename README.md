@@ -118,7 +118,7 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
     formData.append("cccdFront", document.getElementById("cccdFront").files[0]);
     formData.append("cccdBack", document.getElementById("cccdBack").files[0]);
 
-    fetch("https://script.google.com/macros/s/AKfycbzrC06XG8xOK2QYp0lqp1GWDCIkTuel4CpStkJqmFlsLua-xHf78j9uBPBmegBBS_Y1/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyV7jGT-EOssEqkb_l0DkbdrVLckQofDgOGUFqjiNAIIT-1Qtj_hUi5W66Q2c-kx7Ks/exec", {
         method: "POST",
         body: formData
     })
