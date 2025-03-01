@@ -108,9 +108,7 @@
 </div>
 
 <script>
-
-
-document.getElementById("dataForm").addEventListener("submit", function (event) {
+document.getElementById("dataForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     let formData = new FormData();
@@ -120,20 +118,24 @@ document.getElementById("dataForm").addEventListener("submit", function (event) 
     formData.append("cccdFront", document.getElementById("cccdFront").files[0]);
     formData.append("cccdBack", document.getElementById("cccdBack").files[0]);
 
-  fetch("https://script.google.com/macros/s/AKfycbzWGoooI9AbyrCpzC8d-NWkYYA7Cp04UYUR8-42CaaXWm9m1135BjVGO6GlyM2eYheh/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzrC06XG8xOK2QYp0lqp1GWDCIkTuel4CpStkJqmFlsLua-xHf78j9uBPBmegBBS_Y1/exec", {
         method: "POST",
         body: formData
     })
-    .then(response => response.json()) // Đọc phản hồi JSON từ server
+    .then(response => response.json())
     .then(data => {
-        alert("Dữ liệu đã được gửi thành công!");
-        console.log("Phản hồi từ server:", data);
+        if (data.status === "success") {
+            alert("Dữ liệu đã được gửi thành công! Link thư mục: " + data.folderUrl);
+        } else {
+            alert("Có lỗi xảy ra: " + data.message);
+        }
     })
     .catch(error => {
         console.error("Lỗi:", error);
         alert("Có lỗi xảy ra! Hãy thử lại.");
     });
 });
+
 </script>
 
 </body>
