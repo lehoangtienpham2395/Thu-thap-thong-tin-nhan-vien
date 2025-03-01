@@ -108,7 +108,9 @@
 </div>
 
 <script>
-document.getElementById("dataForm").addEventListener("submit", function(event) {
+
+
+document.getElementById("dataForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     let formData = new FormData();
@@ -118,20 +120,22 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
     formData.append("cccdFront", document.getElementById("cccdFront").files[0]);
     formData.append("cccdBack", document.getElementById("cccdBack").files[0]);
 
-    fetch("https://script.google.com/macros/s/AKfycbxSIAFJ892shmGjRzMpL1lt8kV7nN3sTwD5HJXtMglcR_FQfQ8Q2yrivIJdlnAvzPvI/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzWGoooI9AbyrCpzC8d-NWkYYA7Cp04UYUR8-42CaaXWm9m1135BjVGO6GlyM2eYheh/exec", {
         method: "POST",
         body: formData
     })
-    .then(response => response.text())
+    .then(response => response.json()) // Đọc phản hồi JSON từ server
     .then(data => {
         alert("Dữ liệu đã được gửi thành công!");
+        console.log("Phản hồi từ server:", data);
     })
     .catch(error => {
         console.error("Lỗi:", error);
-        alert("Có lỗi xảy ra!");
+        alert("Có lỗi xảy ra! Hãy thử lại.");
     });
 });
 </script>
 
 </body>
 </html>
+
