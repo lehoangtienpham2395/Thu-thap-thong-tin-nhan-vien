@@ -47,3 +47,33 @@
     </form>
 </body>
 </html>
+
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let formData = {
+        hoten: document.getElementById("hoten").value,
+        sodienthoai: document.getElementById("sodienthoai").value,
+        giayxnhk: document.getElementById("giayxnhk").value,
+        cccdtruoc: document.getElementById("cccdtruoc").value,
+        cccdsau: document.getElementById("cccdsau").value
+    };
+
+    fetch("[LINK_API_GOOGLE_APPS_SCRIPT](https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/edit)", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Dữ liệu đã được gửi thành công!");
+    })
+    .catch(error => {
+        console.error("Lỗi:", error);
+        alert("Có lỗi xảy ra!");
+    });
+});
+</script>
+
