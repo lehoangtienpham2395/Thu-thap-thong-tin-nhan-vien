@@ -120,7 +120,7 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
         cccdBack: document.getElementById("cccdBack").files[0].name
     };
 
-    fetch("[https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/edit](https://script.google.com/macros/s/AKfycbxgj2QXyrU6Ay2ISy9sMPibNpnGt2OAJD7OCVkaM4KhgALeGolqG-b76QgGLSbJxhNK/exec)", {
+    fetch("https://script.google.com/macros/s/AKfycbzmH4pFC7h01Pq-nKblv_4YrF8Qe6qyhJBC2iJ6Yo_7WLn_CjP5fmxyUKw-vCAfzQww/exec", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" }
