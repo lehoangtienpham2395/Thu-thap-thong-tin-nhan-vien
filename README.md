@@ -36,7 +36,7 @@
         <input type="tel" id="phoneNumber" name="phoneNumber" required>
         
         <label for="hanhKiem">Giấy xác nhận hạnh kiểm:</label>
-        <input type="file" id="hanhKiem" name="hanhKiem" accept="image/*" required>
+        <input type="file" id="hanhKiem" name="hanhKiem" accept="image/*">
         
         <label for="cccdFront">CCCD mặt trước:</label>
         <input type="file" id="cccdFront" name="cccdFront" accept="image/*" required>
