@@ -27,6 +27,7 @@
 <body>
     <h2>Thu Thập Thông Tin</h2>
     <p>Xin chào, bạn vui lòng nhập đầy đủ thông tin dưới đây nhé. Lưu ý, phải nhập đúng các thông tin dưới đây, nó sẽ giúp cho phần hoàn tất hồ sơ của bạn được nhanh hơn và có thể đi làm sớm nhất.</p>
+    
     <form id="dataForm">
         <label for="fullName">Họ tên đầy đủ:</label>
         <input type="text" id="fullName" name="fullName" required>
@@ -45,35 +46,32 @@
         
         <button type="submit">Gửi thông tin</button>
     </form>
+
+
+    <script>
+    document.getElementById("dataForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let formData = new FormData();
+        formData.append("hoten", document.getElementById("fullName").value);
+        formData.append("sodienthoai", document.getElementById("phoneNumber").value);
+        formData.append("giayxnhk", document.getElementById("hanhKiem").files[0]);
+        formData.append("cccdtruoc", document.getElementById("cccdFront").files[0]);
+        formData.append("cccdsau", document.getElementById("cccdBack").files[0]);
+
+        fetch("https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/settings", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert("Dữ liệu đã được gửi thành công!");
+        })
+        .catch(error => {
+            console.error("Lỗi:", error);
+            alert("Có lỗi xảy ra!");
+        });
+    });
+    </script>
 </body>
 </html>
-
-
-<script>
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    let formData = {
-        hoten: document.getElementById("hoten").value,
-        sodienthoai: document.getElementById("sodienthoai").value,
-        giayxnhk: document.getElementById("giayxnhk").value,
-        cccdtruoc: document.getElementById("cccdtruoc").value,
-        cccdsau: document.getElementById("cccdsau").value
-    };
-
-    fetch("[LINK_API_GOOGLE_APPS_SCRIPT](https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/edit)", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("Dữ liệu đã được gửi thành công!");
-    })
-    .catch(error => {
-        console.error("Lỗi:", error);
-        alert("Có lỗi xảy ra!");
-    });
-});
-</script>
-
