@@ -71,7 +71,6 @@
 <body>
 
 <div class="container">
-    <h2>FORM THU THẬP THÔNG TIN</h2>
     
     <p class="highlight">
         Lưu ý, nhập đúng và đầy đủ các thông tin dưới đây, nó sẽ giúp cho phần hoàn tất hồ sơ của bạn được nhanh hơn và có thể đi làm sớm nhất có thể. Cảm ơn sự hợp tác của bạn!
@@ -121,7 +120,7 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
         cccdBack: document.getElementById("cccdBack").files[0].name
     };
 
-    fetch("https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/edit", {
+    fetch("[https://script.google.com/u/0/home/projects/1em3wBDTeM7knVCG2Id9f44GTY7K2w_699hkMp327hHZbrxX24rrihFEq/edit](https://script.google.com/macros/s/AKfycbxgj2QXyrU6Ay2ISy9sMPibNpnGt2OAJD7OCVkaM4KhgALeGolqG-b76QgGLSbJxhNK/exec)", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" }
